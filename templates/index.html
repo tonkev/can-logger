@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Can Logger</title>
+        <script type="text/javascript" src="{{url_for('static', filename='socket.io-client/dist/socket.io.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='canvas-gauges/gauge.min.js')}}"></script>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            #checkbox_div {
+                float: left;
+                background-color: blueviolet
+            }
+        </style>
+        <div id="checkbox_div">
+            {% for message in db.messages %}
+                {% for signal in message.signals %}
+                    <div>
+                        {{ signal.name }}
+                        <input type="checkbox" class="gauge_select" id="gs_{{ signal.name }}" name="{{ signal.name }}" onclick="gauge_select_change('gs_{{ signal.name }}')">
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <script>
+            var min_values = {
+                {% for message in db.messages %}
+                    {% for signal in message.signals %}
+                        {% if signal.minimum %}
+                            {{ signal.name }}: {{ signal.minimum }},
+                        {% else %}
+                            {{ signal.name }}: 0,
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            }
+            var max_values = {
+                {% for message in db.messages %}
+                    {% for signal in message.signals %}
+                        {% if signal.maximum %}
+                            {{ signal.name }}: {{ signal.maximum }},
+                        {% else %}
+                            {{ signal.name }}: 100,
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            }
+            var gauges = []
+            function create_gauge(gs){
+                var canvas = document.createElement('canvas')
+                canvas.id = 'g_' + gs.name
+                canvas.class = "gauge"
+                document.body.appendChild(canvas)
+                gauge = new RadialGauge({
+                    renderTo: 'g_' + gs.name,
+                    title: gs.name,
+                    width: 400,
+                    height: 400,
+                    minValue: min_values[gs.name],
+                    maxValue: max_values[gs.name],
+                    highlights: []
+                })
+                var tickStep = (gauge.options.maxValue - gauge.options.minValue) / 5
+                gauge.options.majorTicks = [
+                    gauge.options.minValue,
+                    gauge.options.minValue + tickStep,
+                    gauge.options.minValue + (tickStep * 2),
+                    gauge.options.minValue + (tickStep * 3),
+                    gauge.options.minValue + (tickStep * 4),
+                    gauge.options.maxValue
+                ]
+                gauge.update()
+                gauge.draw()
+                gauges.push(gauge)
+            }
+            var gauge_selects = document.getElementsByClassName("gauge_select")
+            for(var i = 0; i < gauge_selects.length; i++){
+                var gs = gauge_selects[i]
+                if(gs.checked){
+                    create_gauge(gs)
+                }
+            }
+            function gauge_select_change(id){
+                var gs = document.getElementById(id)
+                var gauge = gauges.find(function(gauge) { return gauge.options.title == gs.name })
+                if(gs.checked){
+                    if(! gauge){
+                        create_gauge(gs)
+                    }
+                }else if(gauge){
+                    var canvas = document.getElementById('g_' + gs.name)
+                    document.body.removeChild(canvas)
+                    gauges.splice(gauges.indexOf(gauge), 1)
+                }
+            }
+
+            var socket = io()
+            socket.on('data_broadcast', function(message) {
+                data = JSON.parse(message)
+                for(var i = 0; i < gauges.length; i++){
+                    var g = gauges[i]
+                    if(g.options.title in data){
+                        g.value = data[g.options.title]
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

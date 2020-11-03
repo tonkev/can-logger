@@ -1,0 +1,138 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+
+
+BO_ 1570 megasquirt_gp50: 8 Vector__XXX
+ SG_ launch_retard : 55|16@0- (0.1,0) [0|11.5] "deg" Vector__XXX
+ SG_ launch_timer : 39|16@0+ (0.001,0) [0|15] "s" Vector__XXX
+ SG_ total_accel : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ map_accel : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1563 megasquirt_gp43: 8 Vector__XXX
+ SG_ timing_err : 63|8@0- (1,0) [0|0] "" Vector__XXX
+ SG_ sd_status : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ sd_phase : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ sd_error : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ sd_filenum : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ syncreason : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ synccnt : 7|8@0+ (1,0) [0|250] "" Vector__XXX
+
+BO_ 1552 megasquirt_gp32: 8 Vector__XXX
+ SG_ AFR16 : 63|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR15 : 55|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR14 : 47|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR13 : 39|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR12 : 31|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR11 : 23|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR10 : 15|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR9 : 7|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+
+BO_ 1551 megasquirt_gp31: 8 Vector__XXX
+ SG_ AFR8 : 63|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR7 : 55|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR6 : 47|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR5 : 39|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR4 : 31|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR3 : 23|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+ SG_ AFR2 : 15|8@0+ (0.1,0) [8|16] "" Vector__XXX
+ SG_ AFR1 : 7|8@0+ (0.1,0) [8|16] "AFR" Vector__XXX
+
+BO_ 1523 megasquirt_gp3: 8 Vector__XXX
+ SG_ afr2_old : 55|16@0- (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ afr1_old : 39|16@0- (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ batt : 23|16@0- (0.1,0) [8|16] "V" Vector__XXX
+ SG_ tps : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1522 megasquirt_gp2: 8 Vector__XXX
+ SG_ clt : 55|16@0- (0.1,0) [0|130] "deg F" Vector__XXX
+ SG_ mat : 39|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ map : 23|16@0- (0.1,0) [20|150] "kPa" Vector__XXX
+ SG_ baro : 7|16@0- (0.1,0) [0|0] "kPa" Vector__XXX
+
+BO_ 1520 megasquirt_gp0: 8 Vector__XXX
+ SG_ rpm : 55|16@0+ (1,0) [0|12000] "RPM" Vector__XXX
+ SG_ pw2 : 39|16@0+ (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pw1 : 23|16@0+ (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ seconds : 7|16@0+ (1,0) [0|0] "s" Vector__XXX
+
+
+
+CM_ SG_ 1570 launch_retard "Launch retard";
+CM_ SG_ 1570 launch_timer "Timer for timed-launch retard";
+CM_ SG_ 1570 total_accel "Total accel";
+CM_ SG_ 1570 map_accel "MAPdot based accel";
+CM_ SG_ 1563 timing_err "Calculated error in ignition timing";
+CM_ SG_ 1563 sd_status "SDcard status bitfield";
+CM_ SG_ 1563 sd_phase "SDcard internal code";
+CM_ SG_ 1563 sd_error "SDcard error number";
+CM_ SG_ 1563 sd_filenum "SDcard file number";
+CM_ SG_ 1563 syncreason "Sync-loss reason code";
+CM_ SG_ 1563 synccnt "Sync-loss counter";
+CM_ SG_ 1552 AFR16 "AFR cyl #16";
+CM_ SG_ 1552 AFR15 "AFR cyl #15";
+CM_ SG_ 1552 AFR14 "AFR cyl #14";
+CM_ SG_ 1552 AFR13 "AFR cyl #13";
+CM_ SG_ 1552 AFR12 "AFR cyl #12";
+CM_ SG_ 1552 AFR11 "AFR cyl #11";
+CM_ SG_ 1552 AFR10 "AFR cyl #10";
+CM_ SG_ 1552 AFR9 "AFR cyl #9";
+CM_ SG_ 1551 AFR8 "AFR cyl #8";
+CM_ SG_ 1551 AFR7 "AFR cyl #7";
+CM_ SG_ 1551 AFR6 "AFR cyl #6";
+CM_ SG_ 1551 AFR5 "AFR cyl #5";
+CM_ SG_ 1551 AFR4 "AFR cyl #4";
+CM_ SG_ 1551 AFR3 "AFR cyl #3";
+CM_ SG_ 1551 AFR2 "AFR cyl #2";
+CM_ SG_ 1551 AFR1 "AFR cyl #1";
+CM_ SG_ 1523 batt "Battery voltage";
+CM_ SG_ 1523 tps "Throttle position";
+CM_ SG_ 1522 clt "Coolant temperature";
+CM_ SG_ 1522 mat "Manifold air temperature";
+CM_ SG_ 1522 map "Manifold air pressure";
+CM_ SG_ 1522 baro "Barometric pressure";
+CM_ SG_ 1521 afrtgt2 "Bank 2 AFR target";
+CM_ SG_ 1521 afrtgt1 "Bank 1 AFR target";
+CM_ SG_ 1521 engine "Bitfield of engine status";
+CM_ SG_ 1521 squirt "Bitfield of batch fire injector events";
+CM_ SG_ 1521 adv_deg "Final ignition spark advance";
+CM_ SG_ 1520 rpm "Engine RPM";
+CM_ SG_ 1520 pw2 "Main pulsewidth bank 2";
+CM_ SG_ 1520 pw1 "Main pulsewidth bank 1";
+CM_ SG_ 1520 seconds "Seconds ECU has been on";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "BusType" "CAN";
+
